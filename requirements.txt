@@ -1,0 +1,31 @@
+# --- 核心框架 ---
+fastapi
+uvicorn[standard]
+python-multipart  # 用于文件上传
+python-dotenv
+tenacity
+
+# --- 数据库 ---
+sqlalchemy
+psycopg2-binary
+pgvector
+
+# --- AI SDK ---
+google-generativeai
+dashscope
+oss2  # 阿里云 OSS SDK（用于音频转录文件上传）
+openai>=1.0.0
+
+# --- 工具 ---
+pydantic
+requests
+numpy  # 用于向量距离计算
+sentence-transformers  # Local Rerank (BGE-M3)
+
+# --- 认证与安全 ---
+python-jose[cryptography]  # JWT处理
+bcrypt>=4.0.0  # bcrypt 库（指定版本以解决兼容性问题）
+passlib[bcrypt]  # 密码哈希（bcrypt）
+
+# --- 调度器 ---
+apscheduler  # 定时任务调度

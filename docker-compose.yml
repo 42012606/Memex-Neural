@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # [Service 1] 核心数据库
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: memex-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-memex}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-memex_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-memex}
+      TZ: Asia/Shanghai
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U memex" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # [Service 2] 后端 API
+  backend:
+    build: .
+    container_name: memex-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src # Live Reload
+      - ./web:/app/web # Frontend Mount
+      # - D:/:/D  # 示例：挂载本地磁盘（根据实际情况修改）
+      # ===== 存储管理 - 多硬盘挂载 =====
+      # 在"高级设置 → 存储管理"中添加挂载点后生效
+      # 格式: 宿主机路径 : 容器内路径
+      # - /volume1/data:/mnt/disk1      # 硬盘1 (示例)
+      # - /volume2/data:/mnt/disk2      # 硬盘2 (示例)
+      # - /volume3/date:/mnt/backup    # 备份盘 (示例)
+      # ================================
+    ports:
+      - "5000:5000"
+    environment:
+      # 数据库连接
+      POSTGRES_USER: ${POSTGRES_USER:-memex}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-memex_dev_password}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:-memex}
+
+      # 基础路径
+      DATA_DIR: /app/data
+      TZ: Asia/Shanghai
+      PYTHONUNBUFFERED: 1
+      DEBUG: "True"
+
+      # 默认 JWT 密钥
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-please-change-this-secret-key}
+      JWT_EXPIRATION_HOURS: 168
+
+      # 默认管理员
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-please-change-password}
+
+      # 文件服务地址
+      FILE_SERVICE_BASE_URL: http://localhost:5000
+
+    command: python -m uvicorn src.main:app --host 0.0.0.0 --port 5000 --reload
+
+    # 宿主机网关映射 (用于连代理)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

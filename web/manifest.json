@@ -1,0 +1,15 @@
+{
+    "name": "Memex: Personal AI Agent",
+    "short_name": "Memex",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#131314",
+    "theme_color": "#131314",
+    "icons": [
+        {
+            "src": "/static/logo.svg",
+            "sizes": "192x192 512x512",
+            "type": "image/svg+xml"
+        }
+    ]
+}

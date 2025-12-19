@@ -1,0 +1,295 @@
+# ============================================
+# Memex Project .gitignore
+# Python + AI + Docker 项目
+# ============================================
+
+# ============================================
+# 敏感信息文件 (最高优先级)
+# ============================================
+.env
+.env.local
+.env.production
+.env.*.local
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# 生产部署配置（包含域名等敏感信息）
+docker-compose.nas.yml
+docker-compose.override.yml
+
+# ============================================
+# Python
+# ============================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# ============================================
+# IDE / Editor
+# ============================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+\#*\#
+.\#*
+
+# ============================================
+# 操作系统
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.Trash-*
+.nfs*
+
+# ============================================
+# 数据库文件
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+/data/postgres/
+/data/pgdata/
+
+# ============================================
+# 日志文件
+# ============================================
+*.log
+logs/
+/data/logs/
+*.out
+*.err
+
+# ============================================
+# 临时文件和缓存
+# ============================================
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.cache
+
+# ============================================
+# AI 项目特定
+# ============================================
+# 向量数据库
+chroma_db/
+faiss_index/
+*.index
+*.npy
+*.npz
+
+# 模型文件 (如果本地存储)
+models/
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# 嵌入向量缓存
+embeddings_cache/
+vector_cache/
+
+# ============================================
+# 用户数据和上传文件
+# ============================================
+# 用户数据目录
+/data/admin/
+/data/users/
+/data/_INBOX/
+/data/_NEEDS_REVIEW/
+/data/memex/
+
+# 上传文件
+uploads/
+media/
+files/
+attachments/
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+
+# 排除示例文件
+!examples/**/*.pdf
+!docs/**/*.pdf
+
+# ============================================
+# Docker
+# ============================================
+# Docker 数据卷
+/data/
+
+# Docker 缓存
+.docker/
+
+# ============================================
+# 前端相关 (如果有)
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn/
+package-lock.json
+yarn.lock
+
+# 前端构建产物
+/web/dist/
+/web/build/
+/static/dist/
+
+# ============================================
+# 测试和调试
+# ============================================
+debug/
+test_output/
+.pytest_cache/
+*.test.db
+
+# ============================================
+# 其他
+# ============================================
+# 备份文件
+*.backup
+*.old
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 个人笔记
+NOTES.md
+TODO.md
+SCRATCH.md
+
+# 本地配置覆盖
+config.local.yml
+config.local.json
+docker-compose.override.yml
+
+# ============================================
+# 项目特定排除
+# ============================================
+# 如果有特定的调试脚本包含敏感信息
+test_with_real_api.py
+local_test_*.py
+
+# 性能分析
+*.prof
+*.lprof
+
+# ============================================
+# 保留示例文件
+# ============================================
+# 确保示例和文档不被忽略
+!.env.example
+!docker-compose.example.yml
+!README.md
+!docs/

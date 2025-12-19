@@ -1,0 +1,178 @@
+/* Vue v-cloak - 防止未编译模板闪烁 */
+[v-cloak] {
+    display: none !important;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-heavy {
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel {
+    background: rgba(30, 31, 32, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.glass-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Markdown Content Styles */
+.prose pre {
+    background-color: #1e1e1e !important;
+    border-radius: 0.5rem;
+}
+
+.prose code {
+    color: #e5e7eb !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+}
+
+.prose pre code {
+    background-color: transparent !important;
+    padding: 0;
+}
+
+.prose img {
+    border-radius: 0.5rem;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.prose a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.prose a:hover {
+    text-decoration: underline;
+}
+
+.prose ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+}
+
+.prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5em;
+}
+
+/* Neon Text Effect */
+.neon-text {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile specific optimisations */
+@media (max-width: 768px) {
+    .glass-panel {
+        background: rgba(30, 31, 32, 0.85);
+        /* More opaque on mobile for better readability */
+    }
+}
+
+/* Voice Recording Soundwave Animation */
+@keyframes soundwave {
+
+    0%,
+    100% {
+        transform: scaleY(0.5);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* Recording Button Active State */
+.recording-active {
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Prevent textarea from being hidden when keyboard shows */
+textarea:focus {
+    position: relative;
+    z-index: 10;
+}
+
+/* Mobile input box improvements */
+@media (max-width: 768px) {
+
+    /* Ensure input container stays visible above keyboard */
+    .chat-input-wrapper {
+        position: sticky;
+        bottom: 0;
+        z-index: 50;
+        background: #131314;
+    }
+
+    /* Reduce button touch targets for better fit */
+    .input-btn {
+        min-width: 40px;
+        min-height: 40px;
+    }
+}

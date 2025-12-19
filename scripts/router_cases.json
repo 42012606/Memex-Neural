@@ -1,0 +1,93 @@
+[
+  {
+    "name": "greet_chat",
+    "user_input": "你好，今天天气不错",
+    "needs_search": false,
+    "must_keywords": [],
+    "history": "",
+    "mock_keywords": [],
+    "md": "[User] Greeting > Weather"
+  },
+  {
+    "name": "tech_search",
+    "user_input": "Memex 的 vector db 配置在哪里修改？",
+    "needs_search": true,
+    "must_keywords": ["vector db", "配置"],
+    "history": "",
+    "mock_keywords": ["Memex", "vector db", "配置修改"],
+    "md": "[Tech] Config > VectorDB"
+  },
+  {
+    "name": "file_analyze_name",
+    "user_input": "分析 20231115_体检报告.txt 全文",
+    "needs_search": true,
+    "must_keywords": ["20231115_体检报告.txt"],
+    "history": "",
+    "mock_keywords": ["20231115_体检报告.txt", "全文"],
+    "md": "[File] Analyze > Report"
+  },
+  {
+    "name": "latest_upload",
+    "user_input": "刚刚上传的文件详细内容",
+    "needs_search": true,
+    "must_keywords": ["刚刚上传", "文件"],
+    "history": "",
+    "mock_keywords": ["刚刚上传", "文件"],
+    "md": "[File] Latest > Detail"
+  },
+  {
+    "name": "time_range_search",
+    "user_input": "找 11 月的上传记录",
+    "needs_search": true,
+    "must_keywords": ["11月", "上传"],
+    "history": "",
+    "mock_keywords": ["11月", "上传记录"],
+    "md": "[Data] Search > Monthly"
+  },
+  {
+    "name": "yesterday_summary",
+    "user_input": "把昨天的对话摘要一下",
+    "needs_search": false,
+    "must_keywords": [],
+    "history": "",
+    "mock_keywords": ["昨天", "对话", "摘要"],
+    "md": "[Chat] Summary > Yesterday"
+  },
+  {
+    "name": "pronoun_with_history",
+    "user_input": "它什么时候会报错？",
+    "history": "正在排查 MainController.py 崩溃",
+    "needs_search": true,
+    "must_keywords": ["MainController.py", "报错"],
+    "mock_keywords": ["MainController.py", "报错场景"],
+    "md": "[Debug] Crash > MainController"
+  },
+  {
+    "name": "file_read_id",
+    "user_input": "读取文件 id:39 的内容",
+    "needs_search": true,
+    "must_keywords": ["id:39"],
+    "history": "",
+    "mock_keywords": ["id:39", "读取"],
+    "md": "[File] Read > ID39"
+  },
+  {
+    "name": "log_summary",
+    "user_input": "总结昨天的日志发生了什么",
+    "needs_search": true,
+    "must_keywords": ["日志", "昨天"],
+    "history": "",
+    "mock_keywords": ["日志", "昨天"],
+    "md": "[Log] Summary > Yesterday"
+  },
+  {
+    "name": "chat_small_talk",
+    "user_input": "周末打算去哪里玩？",
+    "needs_search": false,
+    "must_keywords": [],
+    "history": "",
+    "mock_keywords": [],
+    "md": "[Chat] Weekend > Plan"
+  }
+]
+
